@@ -16,7 +16,8 @@
     "TenteEEEE/vrchat-avatar-hud-clock",
     "TenteEEEE/vrchat-pocket-game-sdk",
     "TenteEEEE/vrchat-avatar-wind-sim",
-    "TenteEEEE/vrchat-world-permission-controller-random-spawn"
+    "TenteEEEE/vrchat-world-permission-controller-random-spawn",
+    "TenteEEEE/vrchat-world-room-board"
   ],
   "packages": []
 }
