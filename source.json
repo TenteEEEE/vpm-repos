@@ -18,7 +18,8 @@
     "TenteEEEE/vrchat-avatar-wind-sim",
     "TenteEEEE/vrchat-world-permission-controller-sequential-spawn",
     "TenteEEEE/vrchat-world-room-board",
-    "TenteEEEE/vrchat-world-permission-controller-force-respawn"
+    "TenteEEEE/vrchat-world-permission-controller-force-respawn",
+    "TenteEEEE/vrchat-world-sheet-board"
   ],
   "packages": []
 }
