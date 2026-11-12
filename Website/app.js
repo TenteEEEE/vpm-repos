@@ -6,8 +6,8 @@ const PACKAGES = {
 {{~ for package in packages ~}}
   "{{ package.Name }}": {
     name: "{{ package.Name }}",
-    displayName: "{{ if package.DisplayName; package.DisplayName; end; }}",
-    description: "{{ if package.Description; package.Description; end; }}",
+    displayName: "{{ if package.DisplayName; package.DisplayName | string.replace "\\" "\\\\" | string.replace "\"" "\\\""; end; }}",
+    description: "{{ if package.Description; package.Description | string.replace "\\" "\\\\" | string.replace "\"" "\\\""; end; }}",
     version: "{{ package.Version }}",
     author: {
       name: "{{ if package.Author.Name; package.Author.Name; end; }}",
