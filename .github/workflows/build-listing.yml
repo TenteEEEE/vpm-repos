@@ -27,7 +27,7 @@ jobs:
     name: build-listing
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment-retry.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       
@@ -59,6 +59,19 @@ jobs:
         with:
           path: ${{env.listPublishDirectory}}
           
+      # deploy-pages can look up the artifact before it is listed and fail with
+      # "No artifacts named github-pages" (actions/deploy-pages#451). Retry once
+      # after a wait; the artifact is not re-uploaded, so the retry finds exactly one.
       - name: Deploy to GitHub Pages
         id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+
+      - name: Wait before retrying deployment
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy to GitHub Pages (retry)
+        id: deployment-retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
